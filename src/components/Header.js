@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -7,9 +6,10 @@ import {
   Navbar,
   NavbarToggler,
   Nav,
-  NavItem,
-  NavLink
+  NavItem
 } from 'reactstrap';
+
+import Link from './Link';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -36,10 +36,9 @@ export default class Example extends React.Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                   <NavItem>
-                    <NavLink to="/" activeClassName="active" tag={RRNavLink}>Main Page</NavLink> 
-                  </NavItem>
-                  <NavItem>
-                    <NavLink to="/profile" activeClassName="active" tag={RRNavLink}>Profile</NavLink> 
+                    <Link to='/'>
+                    Main Page
+                    </Link>
                   </NavItem>
                 </Nav>
               </Collapse>
