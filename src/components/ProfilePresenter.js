@@ -13,7 +13,7 @@ const NO_DATA = 'no data'
 
 const ProfilePresenter = ({ data }) => {
   return (
-    <ProfileInfoContainer>
+    <Container>
      <Row>
       <Col md='4'>
         <LinkStyled href={data.url}>
@@ -42,13 +42,9 @@ const ProfilePresenter = ({ data }) => {
           repositories={data.repositories}/>
       </Col>
     </Row>
-  </ProfileInfoContainer>
+  </Container>
   )
 }
-
-const ProfileInfoContainer = styled(Container) `
-  border: 1px solid black;
-`
 
 const ProfileRow = styled.div `
   margin: 10px 0;
