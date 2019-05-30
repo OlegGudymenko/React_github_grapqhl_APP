@@ -9,29 +9,37 @@ const getProfile = `
   email
 `;
 
-const getRepositories = (limit = 10) => `
-  repositories(first: ${limit}) {
+const getRepositories = `
+  repositories(first: 10, after: $after) {
     nodes {
       name
       description
       id
       createdAt
       url
-      languages(first: ${limit}){
+      languages(first: 10){
         nodes {
           name
           color
         } 
       }
     }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
     totalCount
   }
 `
 
-const getFollowers = (limit = 10) =>  `
-  followers(first: ${limit}) {
+const getFollowers = `
+  followers(first: 10, after: $after) {
     nodes {
       ${getProfile}
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
     totalCount
   }
@@ -39,29 +47,29 @@ const getFollowers = (limit = 10) =>  `
 
 
 export const GET_USER = gql`
-  query($login: String!) {
+  query($login: String!, $after: String) {
     user(login: $login) {
-      ${getRepositories()}
+      ${getRepositories}
       ${getProfile}
-      ${getFollowers()}
+      ${getFollowers}
     }
   }
 `;
 
 export const GET_REPOSITORIES = gql`
-  query($login: String!) {
+  query($login: String!, $after: String) {
     user(login: $login) {
       name
-      ${getRepositories(100)}
+      ${getRepositories}
     }
   }
 `
 
 export const GET_FOLLOWERS = gql`
-  query($login: String!) {
+  query($login: String!, $after: String) {
     user(login: $login) {
       name
-      ${getFollowers(100)}
+      ${getFollowers}
     }
   }
 `

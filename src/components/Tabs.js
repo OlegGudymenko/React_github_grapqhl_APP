@@ -15,7 +15,7 @@ import { CenteredRow, Label } from  './DefaultComponents';
 import RepositoryItem from './RepositoryItem';
 import FollowerItem from './FollowerItem';
 
-const MAX_ITEMS_COUNT = 5;
+const MAX_ITEMS_COUNT = 6;
 class Tabs extends React.Component {
   state = {
     activeTab: '1'
